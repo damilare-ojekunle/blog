@@ -1,0 +1,36 @@
+# Node.js (for both frontend and backend)
+node_modules/
+
+# Logs
+*.log
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Build output
+/dist/
+/build/
+
+# Environment files (sensitive info)
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Dependency directories (for monorepo setups)
+/backend/node_modules
+/frontend/node_modules
+
+# Optional: Next.js build output (for frontend, but could apply to the backend if you use SSR)
+.next/
+
+# Optional: Backend-specific directories
+/backend/.next
+
+# PM2 (if you use it for managing processes)
+pm2.log
