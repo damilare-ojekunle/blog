@@ -1,0 +1,24 @@
+# Node.js
+node_modules/
+
+# Build output
+.next/
+
+# Log files
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Next.js static files (optional, if you have a static export)
+out/
