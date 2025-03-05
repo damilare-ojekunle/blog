@@ -31,6 +31,6 @@ app.get("/news", (req, res) => {
   res.json(news);
 });
 
-initDb();
+// initDb();
 
 app.listen(8080);

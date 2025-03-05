@@ -7,29 +7,30 @@ import {
   getNewsForYearAndMonth,
 } from "@/lib/news";
 
-export default function FilteredNewsPage({ params }) {
+export default async function FilteredNewsPage({ params }) {
   const filter = params.filter;
   const selectedYear = filter?.[0];
   const selectedMonth = filter?.[1];
   let news;
-  let links = getAvailableNewsYears();
+  let links = await getAvailableNewsYears();
   if (selectedYear && !selectedMonth) {
-    news = getNewsForYear(selectedYear);
+    news = await getNewsForYear(selectedYear);
     links = getAvailableNewsMonths(selectedYear);
   }
   if (selectedYear && selectedMonth) {
-    news = getNewsForYearAndMonth(selectedYear, selectedMonth);
+    news = await getNewsForYearAndMonth(selectedYear, selectedMonth);
     links = [];
   }
   let newsContent = <p>No news found</p>;
   if (news && news.length > 0) {
     newsContent = <NewsList news={news} />;
   }
+  const availableYears = await !getAvailableNewsYears();
   if (
-    (selectedYear && !getAvailableNewsYears().includes(+selectedYear)) ||
-    (selectedMonth && !getAvailableNewsMonths().includes(+selectedMonth))
+    (selectedYear && availableYears.includes(selectedYear)) ||
+    (selectedMonth && !getAvailableNewsMonths().includes(selectedMonth))
   ) {
-    throw new Error("Invalid Filter");
+    throw new Error("Insvalid Filter");
   }
 
   return (
